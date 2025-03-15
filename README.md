@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is an **NLP-Powered arXiv paper dashboard and explainer** designed to help researchers and enthusiasts find and analyze the most interesting AI research papers. The system fetches papers from the **arXiv API**, ranks them based on relevancy, authorship, and a **Gemini-generated paper score**, and provides AI-powered summaries and interactive chat functionality.
+This project is an **NLP-Powered arXiv paper dashboard and explainer** designed to help researchers and enthusiasts find and analyze the most interesting AI research papers. The system fetches papers from the **arXiv API**, ranks them based on relevancy, authorship, and a **Gemini-generated paper score**, and provides AI-powered summaries and interactive chat functionality. [Demo](https://calculator5329.github.io/ai-papers/)
 
 ## Features
 
