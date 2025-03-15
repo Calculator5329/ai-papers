@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/paperList.css"; // Component-specific styles
 
-const API_URL = "http://localhost:8000"; // Backend API endpoint
+const API_URL = "https://fastapi-backend-6f6whpbwma-uc.a.run.app/"; // Backend API endpoint
 const MIN_DATE = "2025-03-05"; // Earliest date available for daily papers
 
 const PaperList = ({ onSelectPaper }) => {
