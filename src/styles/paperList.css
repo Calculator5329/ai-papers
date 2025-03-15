@@ -1,0 +1,86 @@
+/* paperList.css */
+
+/* Container for the left section (list of papers) */
+.papers_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -5vh;
+  margin-left: -5vh;
+}
+
+.papers_list_container {
+  width: 500px;
+  height: 750px;
+  border: 2px solid #444;
+  border-radius: 10px;
+  background: #494949;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  position: relative;
+}
+
+.papers_scroll {
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow-y: auto;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paper_container {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 2px solid #777;
+  border-radius: 8px;
+  background: #0d1117;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.paper_container h3 {
+  margin: 0;
+  font-size: 1.1em;
+  color: #c9d1d9;
+}
+
+.paper_container p {
+  font-size: 0.9em;
+  color: #c9d1d9;
+}
+
+.database_selector {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+.summary_link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #646cff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.summary_link:hover {
+  color: #535bf2;
+}
+
+/* Optional separator style */
+.separator {
+  margin: 0 10px;
+}
