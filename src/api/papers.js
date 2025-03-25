@@ -40,14 +40,24 @@ export const getTopPapers = async (table = "recent", limit = 5) => {
  * @param {number} limit - Number of papers to retrieve (default: 5).
  * @returns {Promise<Array>} - An array of paper objects.
  */
-export const getTopPapersByDate = async (table = "recent", selectedDate, limit = 5) => {
+export const getTopPapersByDate = async (
+  table = "recent",
+  selectedDate,
+  limit = 5
+) => {
   try {
-    const response = await axios.get(`${API_URL}/top_papers_by_date/${table}/`, {
-      params: { target_date: selectedDate, limit },
-    });
+    const response = await axios.get(
+      `${API_URL}/top_papers_by_date/${table}/`,
+      {
+        params: { target_date: selectedDate, limit },
+      }
+    );
     return response.data;
   } catch (error) {
-    console.error(`❌ Error fetching papers for date ${selectedDate} in '${table}':`, error);
+    console.error(
+      `❌ Error fetching papers for date ${selectedDate} in '${table}':`,
+      error
+    );
     return [];
   }
 };
@@ -61,7 +71,10 @@ export const getTopPapersByDate = async (table = "recent", selectedDate, limit =
  */
 export const addPaper = async (table, paperData) => {
   try {
-    const response = await axios.post(`${API_URL}/add_paper/${table}/`, paperData);
+    const response = await axios.post(
+      `${API_URL}/add_paper/${table}/`,
+      paperData
+    );
     return response.data;
   } catch (error) {
     console.error(`❌ Error adding paper to '${table}':`, error);

@@ -3,17 +3,13 @@ import axios from "axios";
 import "../styles/paperList.css"; // Component-specific styles
 
 const API_URL = "https://fastapi-backend-6f6whpbwma-uc.a.run.app/"; // Backend API endpoint
-const MIN_DATE = "2025-03-05"; // Earliest date available for daily papers
 
 const PaperList = ({ onSelectPaper }) => {
   const [papers, setPapers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedTable, setSelectedTable] = useState("recent");
-  const [selectedDate, setSelectedDate] = useState(
-    new Date(new Date().setDate(new Date().getDate() - 2))
-      .toISOString()
-      .split("T")[0]
-  );
+  const [availableDates, setAvailableDates] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
     const fetchPapers = async () => {
@@ -46,6 +42,29 @@ const PaperList = ({ onSelectPaper }) => {
 
     fetchPapers();
   }, [selectedTable, selectedDate]);
+
+  useEffect(() => {
+    const fetchAvailableDates = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/available_daily_dates/`);
+        setAvailableDates(response.data);
+
+        // If current selectedDate is invalid (e.g. defaulted to a date with no data), fix it
+        if (response.data.length > 0) {
+          setAvailableDates(response.data);
+          setSelectedDate((prev) =>
+            response.data.includes(prev) ? prev : response.data[0]
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching available daily dates:", error);
+      }
+    };
+
+    if (selectedTable === "daily") {
+      fetchAvailableDates();
+    }
+  }, [selectedTable]);
 
   /**
    * Preloads a paper's embeddings when "Chat About Paper" is clicked.
@@ -80,20 +99,19 @@ const PaperList = ({ onSelectPaper }) => {
 
       <div className="papers_list_container">
         {/* Date picker for daily papers */}
-        {selectedTable === "daily" && (
-          <input
-            type="date"
+        {selectedTable === "daily" && selectedDate && (
+          <select
             className="date_picker"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            min={MIN_DATE}
-            max={
-              new Date(new Date().setDate(new Date().getDate() - 2))
-                .toISOString()
-                .split("T")[0]
-            }
             style={{ marginBottom: "10px" }}
-          />
+          >
+            {availableDates.map((date) => (
+              <option key={date} value={date}>
+                {date}
+              </option>
+            ))}
+          </select>
         )}
 
         <div className="papers_scroll">
