@@ -4,7 +4,6 @@ This project is an NLP-Powered arXiv paper dashboard and explainer designed to h
 
 Built with a FastAPI backend and a React frontend, the system fetches papers from the arXiv API, ranks them based on relevancy, authorship, and a Gemini-generated paper score, and provides AI-powered summaries and interactive chat functionality.
 
-🔗 **Live Site**: [calculator5329.github.io/ai-papers](https://calculator5329.github.io/ai-papers/)
 
 ## ⚙️ Features
 
